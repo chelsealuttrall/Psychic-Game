@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getRandomDigit() {
+            let numbers = "9876543210";
+            let randomIndex = Math.floor(Math.random() * numbers.length);
+            console.log("Random Index", randomIndex);
+            let digit = numbers[randomIndex];
+            console.log("Digit from numbers string", digit);
+            return digit;
+        }
+
+        console.log("Calling the function", getRandomDigit())
+    </script>
+</body>
+
+</html>
