@@ -27,18 +27,18 @@ document.onkeyup = function(event) {
 
     if (event.key === letter) {
         correctGuess();
-        makeRandomLetter();
-        console.log(makeRandomLetter);
     } else if (event.key !== letter && guessesLeft >= 1) {
         wrongGuess();
     } else if (event.key !== letter && guessesLeft < 1) {
-        resetGame();
+        accrueLoss();
+        resetLetterAndGuesses();
+
     }
 }
 
 
 function wrongGuess() {
-    console.log === ("Nope");
+    console.log("Nope");
     guessesLeft = guessesLeft - 1;
     document.getElementById("guessesLeftHTML").innerHTML = guessesLeft;
 }
@@ -51,10 +51,12 @@ function correctGuess() {
     //?continue.makeRandomLetter();
 }
 
+function accrueLoss() {
+    losses = losses + 1;
+    document.getElementById("lossSpan").innerHTML = losses;
+}
 
-function resetGame() {
-    console.log === ("Terrible! You lose!");
-    wins = 0;
-    losses = 0;
+function resetLetterAndGuesses() {
     guessesLeft = 10;
+    letter = "";
 }
