@@ -61,8 +61,10 @@ function accrueLoss() {
 
 function resetLetterAndGuesses() {
     guessesLeft = 10;
-    makeRandomLetter();
+    letter = makeRandomLetter();
+    console.log(letter);
+}
 
-    // resetLetter();
-    //clear guessedHTML }
-};
+
+// resetLetter();
+//clear guessedHTML
