@@ -5,21 +5,13 @@ let losses = 0;
 let guessesLeft = 10;
 let letter = makeRandomLetter()
 console.log(letter)
+    //wrongLetters()
 
-//Random Letter Generator
 function makeRandomLetter() {
     var chars = "abcdefghiklmnopqrstuvwxyz";
-    //pick random # between 0&25
     let randomIndex = Math.floor(Math.random() * chars.length);
     return chars.charAt(randomIndex);
 }
-
-
-//Writing In Guesses Left    
-//let guessesLeftJS = document.getElementById("h4#guessesLeftHTML");
-//guessesLeft.innerText = guessesLeft;
-//console.log(guessesLeft);
-
 
 document.onkeyup = function(event) {
     console.log("You pressed ", event.key);
@@ -41,6 +33,7 @@ function wrongGuess() {
     guessesLeft = guessesLeft - 1;
     document.getElementById("guessesLeftHTML").innerText = guessesLeft;
     console.log(guessesLeft);
+    document.getElementById("guessedHTML").innerHTML = [event.key];
 }
 
 function correctGuess() {
@@ -48,7 +41,6 @@ function correctGuess() {
     wins = wins + 1;
     console.log(wins);
     document.getElementById("winTallyHTML").innerHTML = wins;
-    //?continue.makeRandomLetter();
 }
 
 function accrueLoss() {
@@ -64,7 +56,3 @@ function resetLetterAndGuesses() {
     letter = makeRandomLetter();
     console.log(letter);
 }
-
-
-// resetLetter();
-//clear guessedHTML
