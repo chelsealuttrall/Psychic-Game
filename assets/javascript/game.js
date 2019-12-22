@@ -6,9 +6,7 @@ let guessesLeft = 10;
 let letter = makeRandomLetter()
 console.log(letter)
 
-
 //Random Letter Generator
-
 function makeRandomLetter() {
     var chars = "abcdefghiklmnopqrstuvwxyz";
     //pick random # between 0&25
@@ -16,10 +14,11 @@ function makeRandomLetter() {
     return chars.charAt(randomIndex);
 }
 
+
 //Writing In Guesses Left    
-let guessesLeftJS = document.getElementById("h4#guessesLeftHTML");
-guessesLeft.innerText = guessesLeft;
-console.log(guessesLeft);
+//let guessesLeftJS = document.getElementById("h4#guessesLeftHTML");
+//guessesLeft.innerText = guessesLeft;
+//console.log(guessesLeft);
 
 
 document.onkeyup = function(event) {
@@ -27,20 +26,21 @@ document.onkeyup = function(event) {
 
     if (event.key === letter) {
         correctGuess();
-    } else if (event.key !== letter && guessesLeft >= 1) {
+        resetLetterAndGuesses();
+    } else if (event.key !== letter && guessesLeft >= 2) {
         wrongGuess();
-    } else if (event.key !== letter && guessesLeft < 1) {
+    } else if (event.key !== letter && guessesLeft < 2) {
         accrueLoss();
         resetLetterAndGuesses();
 
     }
 }
 
-
 function wrongGuess() {
     console.log("Nope");
     guessesLeft = guessesLeft - 1;
-    document.getElementById("guessesLeftHTML").innerHTML = guessesLeft;
+    document.getElementById("guessesLeftHTML").innerText = guessesLeft;
+    console.log(guessesLeft);
 }
 
 function correctGuess() {
@@ -52,11 +52,17 @@ function correctGuess() {
 }
 
 function accrueLoss() {
+    guessesLeft = guessesLeft - 1;
     losses = losses + 1;
     document.getElementById("lossSpan").innerHTML = losses;
+    guessesLeft = 10;
+    document.getElementById("guessesLeftHTML").innerText = guessesLeft;
 }
 
 function resetLetterAndGuesses() {
     guessesLeft = 10;
-    letter = "";
-}
+    makeRandomLetter();
+
+    // resetLetter();
+    //clear guessedHTML }
+};
